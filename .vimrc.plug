@@ -1,0 +1,29 @@
+call plug#begin('~/.vim/plugged')
+
+"Fugitive Vim Github Wrapper
+Plug 'altercation/vim-colors-solarized'
+Plug 'tomasr/molokai'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
+Plug 'edkolev/tmuxline.vim'
+
+"filetree
+Plug 'scrooloose/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs'
+
+Plug 'vim-syntastic/syntastic'
+
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-easytags'
+Plug 'majutsushi/tagbar'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'vim-scripts/a.vim'
+
+" ----- Working with Git ----------------------------------------------
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+
+
+
+call plug#end()

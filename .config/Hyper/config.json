@@ -1,0 +1,14 @@
+{
+	"windowPosition": [
+		647,
+		34
+	],
+	"windowSize": [
+		626,
+		1010
+	],
+	"hyper": {
+		"plugins": "{\"plugins\":[\"hyper-aurora\",\"hyper-tabs-enhanced\",\"hyper-statusline\",\"hyperterm-paste\"],\"localPlugins\":[]}",
+		"plugin-versions": "[[\"hyper-aurora\",\"1.0.1\"],[\"hyper-tabs-enhanced\",\"0.4.2\"],[\"hyper-statusline\",\"1.7.6\"],[\"hyperterm-paste\",\"1.1.2\"]]"
+	}
+}
