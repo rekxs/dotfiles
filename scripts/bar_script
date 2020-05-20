@@ -1,0 +1,6 @@
+#!/bin/sh
+
+#. "${HOME}/.cache/wal/colors.sh"
+
+ ${HOME}/Dokumente/scripts/status.sh | DISPLAY=:0.1 lemonbar -p -B "$color0" -F "$color8"
+

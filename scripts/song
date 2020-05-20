@@ -1,0 +1,45 @@
+#!/bin/dash
+#
+# http://github.com/mitchweaver/bin
+#
+# get current song from either mpvc or mpc
+#
+
+if [ "$(pgrep mpv)" ] ; then 
+    song="`mpvc -f \"%artist% - %title%\" 2> /dev/null`"
+    if echo $song | grep -q 'N/A' ; then
+        string="$(cat /tmp/currently_playing | sed \
+                    's/\/home\/mitch\/var\/music\/\(main\|streams\|waiting_pool\)//')"
+        # pattern: 'Entombed (Swe) - Left Hand Path'
+        artist=$(echo "$string" | sed 's/.*\/\(.*\)\/.*/\1/g' | \
+            sed -E 's/\([A-Z][a-z][a-z]\)//')
+        song=`mpvc -f '%file%' 2> /dev/null`
+        if echo "$song" | grep '%file%' > /dev/null 2>&1 ; then
+            song="$(echo $string | sed -E 's/.*.\///')"
+        fi
+        song=$(echo "$song" | sed -E -e 's/(1|2)[0-9][0-9][0-9] -//' -e 's/([0-9]?[0-9]?\. )?//')
+        song="$artist - $song"
+    fi
+    echo $song | grep -q MPV && exit
+
+
+
+elif [ "$(pgrep mpd)" ] ; then 
+    song="`mpc -q current 2> /dev/null`"
+fi
+
+[ -z "$song" ] && exit 1
+
+[ $# -eq 0 ] && max_len=60 || max_len="$1"
+
+[ $# -lt 2 ] && trunc="..." || trunc="$2"
+
+# chop off extension
+song=${song%.${song##*.}}
+
+if [ ${#song} -gt $max_len ] ; then
+    song=`echo "$song" | cut -c1-$max_len`
+    song="${song}$trunc"
+fi
+
+echo $song

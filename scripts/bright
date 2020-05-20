@@ -1,0 +1,14 @@
+#!/bin/dash
+#
+# http://github.com/mitchweaver/bin
+#
+# increments/decrements brightness, clamping to not
+# allow screen to go blank
+#
+
+xbacklight -inc "$1"
+
+[ $(printf %0.f $(xbacklight -get)) -lt 0 ] &&
+    xbacklight -set 1
+
+printf %0.f%%\\n $(xbacklight -get)
